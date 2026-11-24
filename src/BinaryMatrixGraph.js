@@ -36,6 +36,31 @@ export class BinaryMatrixGraph {
      * @returns {number[][]} - an array of nodes in the form of two-element arrays
      */
     neighbors(n) {
+        enqueue: {
+            let neighbors = [];
+            let row = n[0];
+            let col = n[1];
+            let north = [row - 1, col];
+            let south = [row + 1, col];
+            let west = [row, col - 1];
+            let east = [row, col + 1];
+
+            if (this.inBounds(north) && this.valueAt(north) === 0) {
+                neighbors.push(north);
+            }
+            if (this.inBounds(south) && this.valueAt(south) === 0) {
+                neighbors.push(south);
+            }
+            if (this.inBounds(west) && this.valueAt(west) === 0) {
+                neighbors.push(west);
+            }
+            if (this.inBounds(east) && this.valueAt(east) === 0) {
+                neighbors.push(east);
+            }
+
+            return neighbors;
+        }
+    }
         // Implementér denne metode
         // ...
     }
