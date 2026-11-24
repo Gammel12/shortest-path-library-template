@@ -24,6 +24,13 @@ export class Queue {
      * @param {Item} item - The item to be enqueued
      */
     enqueue(item) {
+        if (this.#count === this.#arraySize) {
+            throw new Error("Queue is full");
+        } 
+        this.#data[this.#last] = item;
+        this.#last += 1;
+        this.#last %= this.#arraySize;
+        this.#count += 1;
         // Implementér denne metode
         // ...
     }

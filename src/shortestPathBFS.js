@@ -26,7 +26,61 @@ export function shortestPathBFS(s,t,g) {
 
     // Implementér resten af koden herunder
     // ...
-    
-    return path;
-}  
+    function shortestPathBFS(s, t, g) {
+    let path = [];
+    let visitedSet = new Set();
+    let prevMap = new Map();
+    // Let Q be a Queue of length at least equal to the number of nodes in G.
+    let q = new Queue(g.numberOfNodes());
 
+    const startKey = g.key(s);
+    const targetKey = g.key(t);
+
+    if (g.identicalNodes(s, t)) {
+        return [s];
+    }
+
+    q.enqueue(s);
+    visitedSet.add(startKey);
+
+    let found = false;
+    while (!q.isEmpty()) {
+        const n = q.dequeue();
+
+        for (const neighbor of g.neighbors(n)) {
+            const neighborKey = g.key(neighbor);
+            if (!visitedSet.has(neighborKey)) {
+                visitedSet.add(neighborKey);
+                prevMap.set(neighborKey, n);
+
+                if (g.identicalNodes(neighbor, t)) {
+                    found = true;
+                    break;
+                }
+
+                q.enqueue(neighbor);
+            }
+        }
+
+        if (found) {
+            break;
+        }
+    }
+
+    if (!found) {
+        return path;
+    }
+
+    let current = t;
+    path.unshift(current);
+    while (g.key(current) !== startKey) {
+        current = prevMap.get(g.key(current));
+        if (current === undefined) {
+            return [];
+        }
+        path.unshift(current);
+    }
+
+    return path;
+}
+}
