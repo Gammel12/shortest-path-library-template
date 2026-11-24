@@ -60,9 +60,8 @@ export class BinaryMatrixGraph {
 
             return neighbors;
         }
-    }
-        // Implementér denne metode
-        // ...
+    
+       
     }
 
     identicalNodes(n,m) {
