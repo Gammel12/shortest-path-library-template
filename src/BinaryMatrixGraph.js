@@ -36,7 +36,14 @@ export class BinaryMatrixGraph {
      * @returns {number[][]} - an array of nodes in the form of two-element arrays
      */
     neighbors(n) {
-
+        const[row, col] = n;
+      const neighbors = [
+        [row - 1, col], // up
+        [row + 1, col], // down
+        [row, col - 1], // left
+        [row, col + 1]  // right
+      ];
+      return neighbors.filter(neighbor => this.inBounds(neighbor) && this.valueAt(neighbor) === 0)
         // Implementér denne metode
         // ...
     }
