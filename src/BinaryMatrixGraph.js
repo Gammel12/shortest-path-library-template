@@ -77,4 +77,3 @@ export class BinaryMatrixGraph {
         return this.#numCols * this.#numRows;
     }
 }
-
