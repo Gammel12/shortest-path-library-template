@@ -31,8 +31,7 @@ export class Queue {
         this.#last += 1;
         this.#last %= this.#arraySize;
         this.#count += 1;
-        // Implementér denne metode
-        // ...
+        
     }
 
     dequeue() {

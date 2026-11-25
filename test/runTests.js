@@ -7,12 +7,14 @@
 import { runQueueTests } from './Queue.test.js';
 import { runBinaryMatrixGraphTests } from './BinaryMatrixGraph.test.js';
 import { testPassedCount, testFailedCount } from './testUtils.js';
+import { runPriorityQueueTests } from './PriorityQueue.test.js';
 
 runTests();
 
 function runTests() {
     console.log("== Starting tests ==");
     runQueueTests();
+    runPriorityQueueTests();
     runBinaryMatrixGraphTests();
     console.log("== " + testPassedCount + " passed, " + testFailedCount + " failed ==");
 }
